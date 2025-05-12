@@ -1,88 +1,99 @@
-/* Please
-read
-the
-comments
-near 
-the 
-functions
-...
-...
-...
-Thank you! */
-
-
 let choices = ["rock", "paper", "scissors"];
-let humanScore = 0;
-let computerScore = 0;
-let roundsPlayed = 0;
+let humanChoice;
 
-playGame();
+const scoreContainer = document.getElementById("scoreContainer");
+const playerDisplay = document.getElementById("playerDisplay");
+const computerDisplay = document.getElementById("computerDisplay");
+const resultDisplay = document.getElementById("resultDisplay");
+const winnerDisplay = document.getElementById("winnerDisplay");
+let humanScoreDisplay = document.getElementById("humanScoreDisplay");
+let computerScoreDisplay = document.getElementById("computerScoreDisplay");
 
-function playGame(){
-    do {
-        let computerChoice = getComputerChoice();
-        let humanChoice = getHumanChoice();
-        playRound(computerChoice, humanChoice);
-        roundsPlayed++;
+humanScore = 0;
+computerScore = 0;
+
+
+
+playRound(humanChoice);
         
-    } while (roundsPlayed < 5);
+function playRound(humanChoice){
 
-    console.log(`Game is over, the final score is: (You) ${humanScore} : ${computerScore} (Computer)`);
-}
-
-
-function getComputerChoice(){
+    scoreContainer.style.display = "block";
     let index = Math.floor(Math.random() * choices.length);
-    console.log(choices[index]) // this is just to check if the function works properly, can be removed
-    return choices[index];
-   
-    
-}
+    let computerChoice = choices[index];
 
-function getHumanChoice(){
-    let index = prompt("Enter a choice: 1 (rock), 2 (paper) or 3 (scissors)");
-    index = (parseInt(index) - 1);
-    console.log(choices[index]) // this is just to check if the function works properly, can be removed
-    return choices[index];
-    
-}
-
-function playRound(computerChoice, humanChoice){
     if(computerChoice === humanChoice){
-        console.log("It's a tie!");
+        playerDisplay.textContent = `Player: ${humanChoice}`;
+        computerDisplay.textContent = `Computer: ${computerChoice}`;
+        resultDisplay.textContent = "It's a tie!"
     }
     else{
         switch(humanChoice){
             case "rock":
                 if(computerChoice === "paper"){
-                    console.log("You lose!")
                     computerScore++;
+                    playerDisplay.textContent = `Player: ${humanChoice}`;
+                    computerDisplay.textContent = `Computer: ${computerChoice}`;
+                    resultDisplay.textContent = "You lose!"
+                    
                 }
                 else{
-                    console.log("You win!");
                     humanScore++;
+                    playerDisplay.textContent = `Player: ${humanChoice}`;
+                    computerDisplay.textContent = `Computer: ${computerChoice}`;
+                    resultDisplay.textContent = "You win!"
+                    
                 }
                 break;
             case "paper":
                 if(computerChoice === "scissors"){
-                    console.log("You lose!");
                     computerScore++;
+                    playerDisplay.textContent = `Player: ${humanChoice}`;
+                    computerDisplay.textContent = `Computer: ${computerChoice}`;
+                    resultDisplay.textContent = "You lose!"
+                   
                 }
                 else{
-                    console.log("You win!");
                     humanScore++;
+                    playerDisplay.textContent = `Player: ${humanChoice}`;
+                    computerDisplay.textContent = `Computer: ${computerChoice}`;
+                    resultDisplay.textContent = "You win!"
+                    
                 }
                 break;
             case "scissors":
                 if(computerChoice === "rock"){
-                    console.log("You lose!"); 
                     computerScore++;
+                    playerDisplay.textContent = `Player: ${humanChoice}`;
+                    computerDisplay.textContent = `Computer: ${computerChoice}`;
+                    resultDisplay.textContent = "You lose!"
+                    
                 }
                 else{
-                    console.log("You win!");
                     humanScore++;
+                    playerDisplay.textContent = `Player: ${humanChoice}`;
+                    computerDisplay.textContent = `Computer: ${computerChoice}`;
+                    resultDisplay.textContent = "You win!"
+                    
                 }
                 break;
         }
     }
+    humanScoreDisplay.textContent = `Player Score: ${humanScore}`;
+    computerScoreDisplay.textContent = `Computer Score: ${computerScore}`;
+
+    checkWinner();
+}
+
+function checkWinner(){
+    if(humanScore === 5){
+        winnerDisplay.textContent = "Congratulations! You have won this game!";
+        
+    }
+    else if (computerScore === 5){
+        winnerDisplay.textContent = "Aww, you lost the game 😢 Good luck next time!";
+        
+    }
+
+
 }

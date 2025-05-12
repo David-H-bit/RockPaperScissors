@@ -3,11 +3,32 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="" rel="stylesheet">
+        <link href="index.css" rel="stylesheet">
         <title> Rock paper scissors</title>
     </head>
 
     <body>
+
+        <h1> Rock paper scissors! </h1>
+        <div class="buttons">
+            <button id="rock" onclick="playRound('rock')"> Rock</button>
+            <button id="paper" onclick="playRound('paper')"> Paper</button>
+            <button id="scissors" onclick="playRound('scissors')"> Scissors </button>
+        </div>
+        
+
+        
+        <div id="scoreContainer" style="display: none;">
+            <p id="playerDisplay"></p>
+            <p id="computerDisplay"></p>
+            <p id="resultDisplay"></p>
+            <p id="humanScoreDisplay"></p>
+            <p id="computerScoreDisplay"></p>
+            <p id="winnerDisplay"></p>
+        </div>
+        
+        
+
 
         <script src="RPS.js"></script>
     </body>
